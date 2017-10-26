@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/lastProject.css" />
+
+		<script type="text/javascript">
+			var arrPicPath = [{
+					"cid": 1,
+					"path": "url(img/1.jpg)"
+				},
+				{
+					"cid": 2,
+					"path": "url(img/2.jpg)"
+				},
+				{
+					"cid": 3,
+					"path": "url(img/3.jpg)"
+				},
+				{
+					"cid": 4,
+					"path": "url(img/4.jpg)"
+				},
+				{
+					"cid": 5,
+					"path": "url(img/5.jpg)"
+				}];
+
+			arrPicPath.getPicPath = function(cid) {
+				for(let i = 0; i < arrPicPath.length; i++) {
+					if(cid == arrPicPath[i].cid) {
+						return arrPicPath[i].path;
+					}
+				}
+			};
+
+			window.onload = function() {
+				var count = 1;
+                var timer = "";
+               
+				function changeBodyPic() {
+
+					setInterval(function() {
+
+						count += 1;
+						if(count > 5) {
+							count = 1;
+						}
+                        
+						document.body.style.backgroundImage = arrPicPath.getPicPath(count);
+						
+						var num = 0;
+						var step = 2;
+						
+						timer = setInterval(function(){
+							num += step;
+							if(num>=200){
+								num = 200;
+								clearInterval(timer);
+							}
+							document.body.style.opacity = num / 200;
+						},10);
+						
+					}, 6000);
+
+				}
+				changeBodyPic();
+
+			}
+		</script>
+
+	</head>
+
+	<body>
+
+		<div id="dSpan">
+			<span id="">
+				后台登录界面
+			</span>
+		</div>
+
+		<div id="dUl">
+			<ul>
+				<li class="lihover">快速登录</li>
+				<li>快速注册</li>
+			</ul>
+
+			<div class="liDiv">
+				<div id="dUser">
+					<span>账号:</span>
+					<input type="text" id="iUser" value="" />
+					<p></p>
+				</div>
+
+				<div id="dUserPassword">
+					<span>密码:</span>
+					<input type="password" id="iPass" />
+					<p id="p2"></p>
+				</div>
+
+				<div id="dButton">
+					<input type="button" id="iLogin" value="Login" />
+				</div>
+			</div>
+
+			<div class="liDiv divBlock">
+				<div id="dUser1">
+					<span>注册账号:</span>
+					<input type="text" id="iRegUs" />
+					<p id="p1"></p>
+				</div>
+
+				<div id="dUserPassword1">
+					<span>注册密码:</span>
+					<input type="password" id="iRegPw" />
+					<p></p>
+				</div>
+
+				<div id="dButton1">
+					<input type="button" id="register" value="Register" />
+				</div>
+			</div>
+
+		</div>
+
+		<div id="ifoList">
+			<span id="">
+	        	已注册的账号
+	        </span>
+			<ul id="ifoUl">
+				<!--<li>111 <input type="button" name="" id="remove" value="Remove" onclick="removeLi(this)"/> </li>-->
+			</ul>
+
+		</div>
+	</body>
+
+	<script src="js/lastProject.js" type="text/javascript"></script>
+
+</html>
